@@ -1,0 +1,18 @@
+# action.yml
+name: 'Credential Hunter'
+description: 'Check your repoository for hardcoded credentials!'
+inputs:
+    jar_parms: 
+        description: 'Parameters used to send to the jar'
+        required: true
+        default: '-r . -o hunter_output.html -cmax 10 --skip-refs'
+    license:
+        description: 'the license used to run Credential Hunter'
+        required: true
+runs:
+    using: 'docker'
+    image: 'Dockerfile'
+    args:
+        - ${{ inputs.jar_parms }}  
+    env:
+        LICENSE: ${{ inputs.license }}
