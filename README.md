@@ -3,20 +3,19 @@
 Credential Hunter is a tool you can use to locate hardcoded credentials in your git repositories
 
 Why use Credential Hunter?
-- It's a Github Action which means you just add, configure, and you're off to the races.
-- It's fast!  Much faster than TruffleHog, GitGuardian, and the others
-- It tells you every commit the credential is in, not just the first git diff it's found in
-- We haven't monetized. Which means it's free! 
-    - (We only ask you contact us first because we want to know how to make it better)
+- **It's a GitHub Action**, which means you just add, configure, and you're off to the races.
+- **It's fast!**  Much faster than TruffleHog, GitGuardian, and others.
+- **It’s thorough**. Get alerted to credentials in every commit, not just the first git diff it's found in
+- **It’s free!** While we are in beta, all we ask for is feedback: what you like, what you don’t, and what you would like to see. Opening up this communication is why we ask you to request a license.
 
 # How to use
 
 #### Step 1
-Contact josh@credentialhunter.com and we'll send you a license.
+Request a license via https://credentialhunter.freshdesk.com/support/tickets/new and we will send it to you.
 
 #### Step 2
-Add the license to your Github repository secrets. 
-See here for more info on that: https://docs.github.com/en/actions/security-guides/encrypted-secrets
+Add the license to your GitHub repository secrets. 
+More information about this is available at https://docs.github.com/en/actions/security-guides/encrypted-secrets
 
 #### Step 3
 Add the following step to your Github Workflow:
@@ -27,9 +26,10 @@ Add the following step to your Github Workflow:
         jar_parms: '-r . -j output.json -cmax 10 --skip-refs'
         license: ${{ secrets.credential_hunter_license }}
 
-This will create an output file "output.json" which you can then upload, commit, send to your favorite dashboard, etc. 
+This will create an output file, "output.json" which you can then upload, commit, send to your favorite dashboard, etc. 
+IMPORTANT: if you ask us about a specific finding, _please_ mangle the found credential before sending it in plain text.
 
-For example we could use Github's Artifacts to store the results by adding this step after the Credential Hunter scan:
+For example, we could use Github's Artifacts to store the results by adding this step after the Credential Hunter scan:
 
         name: Archive production artifacts
         uses: actions/upload-artifact@v3
@@ -38,11 +38,11 @@ For example we could use Github's Artifacts to store the results by adding this 
           path: output.json
 
 #### Step 4
-Trigger the scan using your preferred workflow trigger
+Trigger the scan using your preferred workflow trigger.
 
 #### Step 5
-Tell your project lead that you now have credential scanning on your repository. Be promoted, celebrated, and earn $1,000,000+ *
-<sup><sub>*Credential Hunter does not guarantee your project lead will promote you and give you $1M, but we do think they should</sup></sub>
+Tell your project lead that you now have credential scanning on your repository. Be promoted, celebrated, and receive a $1,000,000 bonus for being security-minded. *
+<sup><sub>*Credential Hunter does not guarantee your project lead will promote you or give you $1M, but we do think they should.</sup></sub> ¯\_(ツ)_/¯
 
 ## More info
-Do you like it and want to use it outside of Github Actions?  Check us out: https://www.credentialhunter.com/
+Do you like it and want to use it outside of GitHub Actions?  Check us out: https://www.credentialhunter.com
