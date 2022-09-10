@@ -45,8 +45,8 @@ For example, we could use Github's Artifacts to store the results by adding this
 Trigger the scan using your preferred workflow trigger.
 
 #### Step 5
-Tell your project lead that you now have credential scanning on your repository. Be promoted, celebrated, and receive a $1,000,000 bonus for being security-minded. *
-<sup><sub>*Credential Hunter does not guarantee your project lead will promote you or give you $1M, but we do think they should.</sup></sub> ¯\_(ツ)_/¯
+Tell your project lead that you now have credential scanning on your repository. Be promoted, celebrated, and receive a $1,000,000 bonus for being security-minded. 
+*<sup><sub>*Credential Hunter does not guarantee your project lead will promote you or give you $1M, but we do think they should.</sup></sub> ¯\_(ツ)_/¯
 
 ## More info
 Do you like it and want to use it outside of GitHub Actions?  Check us out: https://www.credentialhunter.com
