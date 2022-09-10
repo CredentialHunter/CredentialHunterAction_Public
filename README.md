@@ -20,18 +20,22 @@ More information about this is available at https://docs.github.com/en/actions/s
 #### Step 3
 Add the following step to your Github Workflow:
     
-      name: Credential Hunter
-      uses: actions/credentialhunter@v1
-      with:
-        jar_parms: '-r . -j output.json -cmax 10 --skip-refs'
-        license: ${{ secrets.credential_hunter_license }}
+     # Check out the repository first!
+     - uses: actions/checkout@v3
+    
+     # Trigger Credential Hunter
+     - name: Credential Hunter
+       uses: CredentialHunter/CredentialHunterAction_Public@version-1.0
+       with:
+         jar_parms: '-r . -j output.json -cmax 10'
+         license: ${{ secrets.credential_hunter_license }}
 
 This will create an output file, "output.json" which you can then upload, commit, send to your favorite dashboard, etc. 
 IMPORTANT: if you ask us about a specific finding, _please_ mangle the found credential before sending it in plain text.
 
 For example, we could use Github's Artifacts to store the results by adding this step after the Credential Hunter scan:
 
-        name: Archive production artifacts
+      - name: Archive production artifacts
         uses: actions/upload-artifact@v3
         with:
           name: scan-results
